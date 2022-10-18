@@ -15,8 +15,9 @@ public class HolidayPayApplication {
 	}
 	
 	@GetMapping("/calculacte")
-	public double calculacte(@RequestParam(value = "middleSalary", defaultValue = "120000") double middleSalary) {
-		return middleSalary;
+	public String calculacte(@RequestParam(value = "middleSalary", defaultValue = "120000") double middleSalary) {
+		HolidayPayCalculator calculator = new HolidayPayCalculator(middleSalary);
+		return String.format("%.2f",calculator.calculate());
 	}
 
 }
